@@ -1,0 +1,53 @@
+nav > .breadcrumb{
+    background: #FFFFFF;
+    border-radius: 0px;
+    border-bottom: 1px solid #00CD66;
+}
+.condition-container{
+    margin-bottom: 10px;
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.condition-container > .row > .input-group > .input-group-append > .bt-search{
+    width: 120px;
+    font-size: 16px;
+}
+.condition-container > .row > .input-group{
+    width: 350px;
+}
+.condition-container > .row > .export-excel{
+    margin-left: 115px;
+}
+.condition-container > .row > .btn-info{
+    height: 38px;
+}
+.condition-container > .row > .user-stop{
+    margin-right: 115px;
+}
+.page-colnum{
+    width: 140px;
+}
+.pagination{
+    margin-left: 50px;
+}
+.page-pagenum{
+    margin-top: 10px;
+    margin-left: 50px;
+    cursor: default;
+}
+
+/**-----------------       clientuser list      -------------------**/
+#clientuser-container{
+    background: #FFFFFF;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+}
+
+/**-----------------       clientuser level      -------------------**/
+#userlevel-container{
+    background: #FFFFFF;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+}
