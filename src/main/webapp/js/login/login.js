@@ -36,7 +36,7 @@ $(function(){
         	tips.html("\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801\uff01");
         }else{
         	$.ajax({
-                url:url+"/action/manager/login",
+                url:url+"/action/login",
                 type:"post",
                 data:{
                     username : username,

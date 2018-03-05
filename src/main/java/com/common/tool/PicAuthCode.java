@@ -67,7 +67,7 @@ public class PicAuthCode {
 	private static int[] getRandomRGB() {
 		int[] rgb = new int[3];
 		for(int i = 0;i < 3;i++) {
-			rgb[i] = random.nextInt(255);
+			rgb[i] = random.nextInt(100);
 		}
 		return rgb;
 	}

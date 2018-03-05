@@ -17,7 +17,7 @@ import com.object.resultEnum;
 import com.object.resultObject;
 
 @Controller
-@RequestMapping("/action/manager")
+@RequestMapping("/action")
 public class managerController {
 	private static final Object loginLock = new Object();
 	

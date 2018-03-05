@@ -1,9 +1,11 @@
 var url = "."
 $(function(){
     //获取登录的用户名
-    var username = getCookie("username");
+    var username = getCookie("username"),
+        lastlogin = getCookie("lastlogin");
     if(username != null && username != ""){
         $(".left-span > .card > .username").html(username);
+        $(".left-span > .card > .lastlogin").html(lastlogin);
     }
     //退出登录
     $("#signout").bind('click',function(){
@@ -49,7 +51,9 @@ $(function(){
                 $(this).bind("click",function(){
                     var url = HTMLPage[num][$(this).index()];
                     new HTMLFactory(url,function(obj){
+                        //设置页面
                         $(".right-span > .html-container").html(obj.contents);
+                        new clientUser().request();
                     });
                 });
             });

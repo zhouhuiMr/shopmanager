@@ -2,6 +2,7 @@ package com.manager.model;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 import com.common.tool.JWTOperate;
 import com.common.tool.SHA256Str;
 import com.config.initConfig;
-import com.data.mapper.managersDao;
+import com.data.mapper.managersMapper;
 import com.object.managers;
 import com.object.resultEnum;
 import com.object.resultObject;
@@ -24,12 +25,12 @@ import com.object.resultObject;
 public class managerModel {
 	
 	@Autowired
-	private managersDao managersDao;
+	private managersMapper managersdao;
 	
 	public resultObject managerLogin(managers managers,HttpServletResponse res) {
 		resultObject resultObject = new resultObject();
 		String encodePassword = SHA256Str.encodeStrBySHA256(managers.getPassword());
-		managers m =managersDao.managerLogin(managers.getUsername(), encodePassword);
+		managers m =managersdao.managersLogin(managers.getUsername(), encodePassword);
 		if(m == null) {
 			resultObject.setResult(resultEnum.LOGINERROR);
 			resultObject.setData("");
@@ -39,6 +40,7 @@ public class managerModel {
 			setCookie(res, "token", token);
 			setCookie(res, "username", urlEncode(m.getUsername()));
 			setCookie(res, "localtime", localDateTime());
+			setCookie(res, "lastlogin", new SimpleDateFormat("yyyy.MM.dd").format(m.getLogintime()));
 			resultObject.setResult(resultEnum.SUCCESS);
 			resultObject.setData("");
 		}

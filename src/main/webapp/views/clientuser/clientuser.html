@@ -16,7 +16,7 @@
         <div class="row ">
             <!--       search span        -->
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="请输入手机号或者用户名" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="text" class="form-control" placeholder="手机号（后四位）或用户名" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary bt-search">
                         <i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;开始搜索
@@ -40,66 +40,62 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">编号</th>
+            <th scope="col" name="id">编号
+                <span>
+                    <i class="fa fa-angle-down fa-lg"></i>
+                </span>
+            </th>
             <th scope="col">用户名</th>
             <th scope="col">手机号</th>
             <th scope="col">省</th>
             <th scope="col">市</th>
             <th scope="col">区</th>
-            <th scope="col">会员等级</th>
-            <th scope="col">积分数量</th>
-            <th scope="col">注册时间</th>
+            <th scope="col" name="level">会员等级
+                <span>
+                    <i class="fa fa-angle-down fa-lg"></i>
+                </span>
+            </th>
+            <th scope="col" name="grades">积分数量
+                <span>
+                    <i class="fa fa-angle-down fa-lg"></i>
+                </span>
+            </th>
+            <th scope="col" name="registtime">注册时间
+                <span>
+                    <i class="fa fa-angle-down fa-lg"></i>
+                </span>
+            </th>
+            <th scope="col" name="status">当前状态
+                <span>
+                    <i class="fa fa-angle-down fa-lg"></i>
+                </span>
+            </th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td style="display: none">22</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>2018-02-28</td>
+            <td colspan="10" style="text-align: center">
+                <i class="fa fa-spinner fa-2x fa-spin"></i>
+            </td>
         </tr>
         </tbody>
     </table>
     <div class="row">
         <div class="input-group mb-3 page-colnum">
             <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">显示</label>
+                <label class="input-group-text" for="pageColumnSelect">显示</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="pageColumnSelect">
                 <option selected value="10">10行</option>
                 <option value="20">20行</option>
                 <option value="40">40行</option>
             </select>
         </div>
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
-            </ul>
+        <nav aria-label="Page navigation">
+            <ul class="pagination"></ul>
         </nav>
-        <p class="text-info page-pagenum">共1000页</p>
+        <p class="text-info page-pagenum">共1页</p>
     </div>
 </div>
 </body>

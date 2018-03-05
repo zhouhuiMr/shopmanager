@@ -154,3 +154,8 @@
     height: auto;
     background: #f8f9fa;
 }
+
+/**---------------   table   ------------------**/
+.table > thead > tr > th{
+    cursor: pointer;
+}

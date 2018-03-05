@@ -1,6 +1,7 @@
 window.HtmlList = new Array();
 window.SUCCESSMSG = "success";
 window.ERRORMSG = "error";
+window.ERRORPAGE = "";
 window.HTMLPage = [
     ["../views/home/home.html"],
     ["../views/clientuser/clientuser.html","../views/clientuser/userlevel.html"]

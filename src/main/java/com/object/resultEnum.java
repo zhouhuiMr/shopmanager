@@ -9,6 +9,7 @@ public enum resultEnum {
 	FAILED("0001","失败"),
 	TIMEOUT("0002","等待超时"),
 	CODEERROR("0003","验证码错误"),
+	PARAMETERERROR("0004","参数错误"),
 	
 
 	/**---------------------------**/

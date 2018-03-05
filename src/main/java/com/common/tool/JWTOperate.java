@@ -74,14 +74,18 @@ public class JWTOperate {
 	 * @return boolean
 	 * */
 	public static boolean isTimeOut(String startTime) {
-		LocalDate endTime = LocalDate.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HH:mm:ss");
-		LocalDate start = LocalDateTime.parse(startTime,formatter).toLocalDate();
-		int day = Period.between(start, endTime).getDays();
-		if(day >= Integer.valueOf(initConfig.USERLOGINEXPIRES)) {
-			return true;
+		if(startTime != null) {
+			LocalDate endTime = LocalDate.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd-HH:mm:ss");
+			LocalDate start = LocalDateTime.parse(startTime,formatter).toLocalDate();
+			int day = Period.between(start, endTime).getDays();
+			if(day >= Integer.valueOf(initConfig.USERLOGINEXPIRES)) {
+				return true;
+			}else {
+				return false;
+			}
 		}else {
-			return false;
+			return true;
 		}
 	}
 }

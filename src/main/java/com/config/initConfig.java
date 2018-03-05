@@ -19,6 +19,8 @@ public class initConfig implements CommandLineRunner {
 	
 	public static String TOKENKEY = "";
 	public static String USERLOGINEXPIRES = "";
+	//data column
+	public static String CLIENTUSERCOLUMN[] = null;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -31,6 +33,7 @@ public class initConfig implements CommandLineRunner {
 		if(properties != null) {
 			TOKENKEY = properties.getProperty("tokenKey");
 			USERLOGINEXPIRES = properties.getProperty("userLoginExpires");
+			CLIENTUSERCOLUMN = getDataColumn(properties.getProperty("clientusercolumn"));
 		}
 	}
 
@@ -61,5 +64,9 @@ public class initConfig implements CommandLineRunner {
 			}
 		}
 		return properties;
+	}
+	
+	private String[] getDataColumn(String str) {
+		return str.split(",");
 	}
 }

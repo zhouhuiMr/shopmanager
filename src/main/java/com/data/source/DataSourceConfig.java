@@ -11,6 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -34,6 +35,8 @@ public class DataSourceConfig {
 	public SqlSessionFactory SqlSessionFactoryOne() throws Exception {
 		SqlSessionFactoryBean factorybean = new SqlSessionFactoryBean();
 		factorybean.setDataSource(dataSoucesOne());
+		factorybean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
+		factorybean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:mybatis-config.xml"));
 		return factorybean.getObject();
 	}
 	
