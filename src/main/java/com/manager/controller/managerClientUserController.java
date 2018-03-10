@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.config.initConfig;
 import com.manager.model.managerClientUserModel;
+import com.object.clientUser;
 import com.object.resultEnum;
 import com.object.resultObject;
 
@@ -38,6 +39,25 @@ public class managerClientUserController {
 			result.setData("");
 		}else {
 			result = clientuserModel.getClientUserList(column, curpage, colname, condition);
+		}
+		return result;
+	}
+	
+	@RequestMapping(path="/clientuser/change",method=RequestMethod.POST)
+	@ResponseBody
+	public resultObject changeClientUserStatus(
+			@RequestParam("id") int id,
+			@RequestParam("status") int status
+			) {
+		resultObject result = new resultObject();
+		if(status == 0 || status ==1) {
+			clientUser user = new clientUser();
+			user.setId(id);
+			user.setStatus(status);
+			result = clientuserModel.changeClientUserStatus(user);
+		}else {
+			result.setResult(resultEnum.PARAMETERERROR);
+			result.setData("");
 		}
 		return result;
 	}

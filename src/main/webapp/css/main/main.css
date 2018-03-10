@@ -159,3 +159,9 @@
 .table > thead > tr > th{
     cursor: pointer;
 }
+.table > tbody > tr{
+    cursor: pointer;
+}
+#clientuser-container > .table > tbody > tr:hover{
+    background-color: #e9ecef!important;
+}

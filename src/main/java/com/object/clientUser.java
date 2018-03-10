@@ -1,6 +1,5 @@
 package com.object;
 
-import java.sql.Timestamp;
 
 public class clientUser {
 	private int id = -1;
@@ -14,6 +13,7 @@ public class clientUser {
 	private String address = "";
 	private int level = 0;
 	private int grades = 0;
+	private int feeamount = 0;
 	private String registtime = null;
 	private int status = 0;
 
@@ -103,6 +103,14 @@ public class clientUser {
 
 	public void setGrades(int grades) {
 		this.grades = grades;
+	}
+
+	public int getFeeamount() {
+		return feeamount;
+	}
+
+	public void setFeeamount(int feeamount) {
+		this.feeamount = feeamount;
 	}
 
 	public String getRegisttime() {

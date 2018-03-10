@@ -1,6 +1,7 @@
 package com.manager.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,22 @@ public class managerClientUserModel {
 		int pagecount = clientuserDao.getPageCount(condition);
 		return pagecount;
 	}
+	
+	public resultObject changeClientUserStatus(clientUser user) {
+		resultObject result = new resultObject();
+		int row = clientuserDao.changeClientStatus(user.getId(),user.getStatus());
+		if(row == 1) {
+			result.setResult(resultEnum.SUCCESS);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			map.put("id", user.getId());
+			result.setData(map);
+		}else {
+			result.setResult(resultEnum.FAILED);
+			result.setData("");
+		}
+		return result;
+	}
+	
 	 
 	/**
 	 * @param clientUser

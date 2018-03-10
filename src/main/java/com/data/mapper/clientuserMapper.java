@@ -3,6 +3,7 @@ package com.data.mapper;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import com.object.clientUser;
 
@@ -20,4 +21,7 @@ public interface clientuserMapper {
 			@Param("condition") String condition);
 	
 	public int getPageCount(@Param("condition") String condition);
+	
+	@Update("UPDATE clientuser SET status = #{status} WHERE id = #{id}")
+	public int changeClientStatus(@Param("id") int id,@Param("status") int status);
 }

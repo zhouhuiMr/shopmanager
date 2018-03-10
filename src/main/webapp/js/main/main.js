@@ -53,7 +53,11 @@ $(function(){
                     new HTMLFactory(url,function(obj){
                         //设置页面
                         $(".right-span > .html-container").html(obj.contents);
-                        new clientUser().request();
+                        var span = new clientUser();
+
+                        span.request(function(){
+                            span.pageSpan.init();
+                        });
                     });
                 });
             });

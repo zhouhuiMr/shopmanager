@@ -16,7 +16,7 @@
         <div class="row ">
             <!--       search span        -->
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="手机号（后四位）或用户名" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <input type="text" id="search-input" class="form-control" placeholder="手机号（后四位）或用户名" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-outline-secondary bt-search">
                         <i class="fa fa-search fa-lg"></i>&nbsp;&nbsp;开始搜索
@@ -40,17 +40,18 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col" name="id">编号
-                <span>
-                    <i class="fa fa-angle-down fa-lg"></i>
-                </span>
-            </th>
+            <th scope="col" name="id">编号</th>
             <th scope="col">用户名</th>
             <th scope="col">手机号</th>
             <th scope="col">省</th>
             <th scope="col">市</th>
             <th scope="col">区</th>
             <th scope="col" name="level">会员等级
+                <span>
+                    <i class="fa fa-angle-down fa-lg"></i>
+                </span>
+            </th>
+            <th scope="col" name="feeamount">消费金额
                 <span>
                     <i class="fa fa-angle-down fa-lg"></i>
                 </span>

@@ -9,12 +9,13 @@
 		<result column="city" property="city"/>
 		<result column="area" property="area"/>
 		<result column="level" property="level"/>
+		<result column="feeamount" property="feeamount"/>
 		<result column="grades" property="grades"/>
 		<result column="registtime" property="registtime"/>
 		<result column="status" property="status"/>
 	</resultMap>
 	<select id="getUserByCondition" resultMap="clientuser">
-		SELECT id,username,telphone,province,city,area,level,grades,registtime,status
+		SELECT id,username,telphone,province,city,area,level,feeamount,grades,registtime,status
 		FROM clientuser 
 		<where>
 			<if test="condition != ''">
@@ -23,7 +24,7 @@
 			</if>
 		</where>
 		<if test="colname != ''">
-			ORDER BY ${colname} DESC
+			ORDER BY ${colname} DESC,id ASC
 		</if>
 		LIMIT #{startcolumn} , #{column}
 	</select>
