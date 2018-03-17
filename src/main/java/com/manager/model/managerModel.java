@@ -30,6 +30,7 @@ public class managerModel {
 	public resultObject managerLogin(managers managers,HttpServletResponse res) {
 		resultObject resultObject = new resultObject();
 		String encodePassword = SHA256Str.encodeStrBySHA256(managers.getPassword());
+		System.out.println(encodePassword);
 		managers m =managersdao.managersLogin(managers.getUsername(), encodePassword);
 		if(m == null) {
 			resultObject.setResult(resultEnum.LOGINERROR);
