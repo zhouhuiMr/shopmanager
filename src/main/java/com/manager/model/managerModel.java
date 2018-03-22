@@ -10,32 +10,34 @@ import java.util.HashMap;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.common.tool.JWTOperate;
 import com.common.tool.SHA256Str;
 import com.config.initConfig;
-import com.data.mapper.managersMapper;
-import com.object.managers;
+import com.manager.login.service.managerOperate;
 import com.object.resultEnum;
 import com.object.resultObject;
+import com.project.object.managers;
 
 @Service
 public class managerModel {
 	
-	@Autowired
-	private managersMapper managersdao;
+	@Reference(version="1.0.0",interfaceName="managerOperate",timeout=5000)
+	private managerOperate managerOperate;
 	
 	public resultObject managerLogin(managers managers,HttpServletResponse res) {
 		resultObject resultObject = new resultObject();
 		String encodePassword = SHA256Str.encodeStrBySHA256(managers.getPassword());
-		System.out.println(encodePassword);
-		managers m =managersdao.managersLogin(managers.getUsername(), encodePassword);
+		managers.setPassword(encodePassword);
+		System.out.println(managers.getUsername()+","+managers.getPassword());
+		managers m =managerOperate.managerLogin(managers);
 		if(m == null) {
 			resultObject.setResult(resultEnum.LOGINERROR);
 			resultObject.setData("");
 		}else {
+			System.out.println(m.getUsername());
 			HashMap<String, String> option = TokenOption(m);
 			String token = JWTOperate.getToken(option);
 			setCookie(res, "token", token);

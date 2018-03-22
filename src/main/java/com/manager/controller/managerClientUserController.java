@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.config.initConfig;
 import com.manager.model.managerClientUserModel;
-import com.object.clientUser;
 import com.object.resultEnum;
 import com.object.resultObject;
+import com.project.object.clientUser;
 
 @Controller
 @RequestMapping("/action/manager")

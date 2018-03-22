@@ -4,18 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.data.mapper.clientuserMapper;
-import com.object.clientUser;
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.manager.client.service.manageClientUser;
 import com.object.resultEnum;
 import com.object.resultObject;
+import com.project.object.clientUser;
 
 @Service
 public class managerClientUserModel {
-	@Autowired
-	private clientuserMapper clientuserDao;
+	
+	@Reference(version="1.0.0",interfaceName="manageClientUser",timeout=5000)
+	private manageClientUser manageClientUser;
+	
 
 	public resultObject getClientUserList(int column, int curpage, String colname, String condition) {
 		resultObject result = new resultObject();
@@ -29,13 +31,12 @@ public class managerClientUserModel {
 		result.setResult(resultEnum.SUCCESS);
 		result.setData(map);
 		if(pageCount > 0) {
-			int startcolumn = column*(curpage-1);
-			ArrayList<clientUser> clientUserList = clientuserDao.getUserByCondition(startcolumn, column, colname, condition);
+			ArrayList<com.project.object.clientUser> clientUserList = manageClientUser.getClientUserList(column, curpage, colname, condition);
 			if(clientUserList == null) {
 				result.setResult(resultEnum.ERROR);
 				result.setData("");
 			}else {
-				for(clientUser user : clientUserList) {
+				for(com.project.object.clientUser user : clientUserList) {
 					changeUserAttr(user);
 				}
 				map.put("clientuserlist", clientUserList);
@@ -53,13 +54,13 @@ public class managerClientUserModel {
 	 * 
 	 * */
 	public int getClientUserCount(String condition) {
-		int pagecount = clientuserDao.getPageCount(condition);
+		int pagecount = manageClientUser.getClientUserCount(condition);
 		return pagecount;
 	}
 	
 	public resultObject changeClientUserStatus(clientUser user) {
 		resultObject result = new resultObject();
-		int row = clientuserDao.changeClientStatus(user.getId(),user.getStatus());
+		int row = manageClientUser.chageClientUserStatus(user);
 		if(row == 1) {
 			result.setResult(resultEnum.SUCCESS);
 			HashMap<String, Object> map = new HashMap<String, Object>();
