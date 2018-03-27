@@ -24,7 +24,7 @@ import com.project.object.managers;
 @Service
 public class managerModel {
 	
-	@Reference(version="1.0.0",interfaceName="managerOperate",timeout=5000)
+	@Reference(version="1.0.0",interfaceName="managerOperate",timeout=10000)
 	private managerOperate managerOperate;
 	
 	public resultObject managerLogin(managers managers,HttpServletResponse res) {
